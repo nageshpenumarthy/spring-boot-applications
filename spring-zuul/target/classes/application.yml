@@ -1,0 +1,31 @@
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+server:
+  port: 8787
+
+zuul:
+  prefix: /api
+  routes:
+    profile:
+      serviceId: profile-service
+
+ribbon:
+  eureka:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    registerWithEureka: false
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
